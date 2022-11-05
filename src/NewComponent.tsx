@@ -1,8 +1,9 @@
 import React, {FC} from 'react';
 
+
 type CurrentArrayMoney = {
-    currentMoney: Array<MoneyType>
-    onClick: ()=>void
+    money: Array<MoneyType>
+    onClickFilterHandler: (value: any) => void
 }
 
 type MoneyType = {
@@ -12,11 +13,11 @@ type MoneyType = {
 }
 
 
-export const NewComponent:FC<CurrentArrayMoney> = (props) => {
+export const NewComponent: FC<CurrentArrayMoney> = (props) => {
     return (
         <>
             <ul>
-                {props.currentMoney.map((objFromMoneyArr, index) => {
+                {props.money.map((objFromMoneyArr, index) => {
                     return (
                         <li key={index}>
                             <span>{objFromMoneyArr.banknote}</span>
@@ -27,9 +28,9 @@ export const NewComponent:FC<CurrentArrayMoney> = (props) => {
                 })}
             </ul>
             <div style={{marginLeft: 35}}>
-                <button onClick={props.onClick}>All</button>
-                <button onClick={props.onClick}>Dollars</button>
-                <button onClick={props.onClick}>Rubles</button>
+                <button onClick={() => props.onClickFilterHandler('All')}>All</button>
+                <button onClick={() => props.onClickFilterHandler('Dollars')}>Dollars</button>
+                <button onClick={() => props.onClickFilterHandler('Rubles')}>Rubles</button>
             </div>
         </>
     );

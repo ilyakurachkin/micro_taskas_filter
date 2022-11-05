@@ -15,12 +15,12 @@ function App() {
         {banknote: 'Rubles', nominal: 50, number: ' v1234567890'},
     ])
 
-    type FilterType = 'All' | 'Dollars' | 'Rubles';
+    type FilterType = 'All' | 'Dollars' | 'Rubles'
 
 
     const [filter, setFilter] = useState<FilterType>('All')
-
     let currentMoney = money;
+
 
     if (filter === 'Dollars') {
         currentMoney = money.filter((FilterMoney) => FilterMoney.banknote === 'Dollars');
@@ -31,16 +31,18 @@ function App() {
     }
 
 
-    const onClickFilterHandler = (nameButton: FilterType) => {
-        setFilter(nameButton)
+    const onClickFilterHandler = (value:FilterType)=>  {
+        setFilter(value)
     }
 
 
     return (
         <>
             <NewComponent
-                currentMoney={money}
-                onClick={()=>onClickFilterHandler('Dollars')}/>
+                money={currentMoney}
+                onClickFilterHandler={onClickFilterHandler}
+            />
+
 
             {/*<ul>*/}
             {/*    {currentMoney.map((objFromMoneyArr, index) => {*/}
@@ -54,7 +56,7 @@ function App() {
             {/*    })}*/}
             {/*</ul>*/}
             {/*<div style={{marginLeft: 35}}>*/}
-            {/*    <button onClick={() => onClickFilterHandler('All')}>All</button>*/}
+            {/*    <button onClick={() => onClickFilterHandler('All')}>All</button> */}
             {/*    <button onClick={() => onClickFilterHandler('Dollars')}>Dollars</button>*/}
             {/*    <button onClick={() => onClickFilterHandler('Rubles')}>Rubles</button>*/}
             {/*</div>*/}
